@@ -22,7 +22,7 @@ public class App {
         frame.setVisible(true);
         frame.addKeyListener(controller);
 
-        Timer timer = new Timer(150, e -> {
+        Timer timer = new Timer(300, e -> {
             model.update();
         });
         timer.start();

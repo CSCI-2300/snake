@@ -3,8 +3,8 @@ package snake.model;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Snake {
-    private final LinkedList<Position> body = new LinkedList<>();
+public class Snake implements SnakeInterface {
+    protected final LinkedList<Position> body = new LinkedList<>();
     private GameModel.Direction direction = GameModel.Direction.RIGHT;
     private boolean grow = false;
 

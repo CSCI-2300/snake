@@ -36,7 +36,13 @@ public class GameView extends JPanel implements Observer {
         }
 
         Position apple = model.getApple();
-        g.setColor(Color.RED);
+        boolean isOrange = model.isOrangeApple();
+        if (isOrange) {
+            g.setColor(Color.ORANGE);
+        }
+        else {
+            g.setColor(Color.RED);
+        }
         g.fillOval(apple.x * cellSize, apple.y * cellSize, cellSize, cellSize);
     }
 

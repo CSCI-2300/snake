@@ -6,6 +6,7 @@ public class GameModel {
     private final int width, height;
     private final Snake snake;
     private Position apple;
+    private boolean isOrangeApple;
     private boolean running = true;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
 
@@ -27,7 +28,13 @@ public class GameModel {
         if (head.x < 0 || head.y < 0 || head.x >= width || head.y >= height || isSelfCollision()) {
             running = false;
         } else if (head.equals(apple)) {
-            snake.grow();
+            if (isOrangeApple) {
+                ConfusedSnake reverse = new ConfusedSnake(snake);
+                reverse.move();
+            }
+            else {
+                snake.grow();
+            }
             spawnApple();
         }
 
@@ -48,6 +55,10 @@ public class GameModel {
         do {
             apple = new Position(rand.nextInt(width), rand.nextInt(height));
         } while (snake.contains(apple));
+        int red = rand.nextInt(5);
+        if (red == 0) {
+            isOrangeApple = true;
+        }
     }
 
     public List<Position> getSnake() {
@@ -56,6 +67,10 @@ public class GameModel {
 
     public Position getApple() {
         return apple;
+    }
+
+    public boolean isOrangeApple() {
+        return isOrangeApple;
     }
 
     public boolean isRunning() {
