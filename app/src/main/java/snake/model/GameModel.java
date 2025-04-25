@@ -29,8 +29,8 @@ public class GameModel {
             running = false;
         } else if (head.equals(apple)) {
             if (isOrangeApple) {
-                ConfusedSnake reverse = new ConfusedSnake(snake);
-                reverse.move();
+                ConfusedSnake confused = new ConfusedSnake(snake);
+                confused.move();
             }
             else {
                 snake.grow();
